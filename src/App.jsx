@@ -1,34 +1,68 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { createBrowserRouter, RouterProvider } from "react-router";
+
+//import ListadoEmpresas from "./components/ListadoEmpresas"
+//import ListadoProveedores from "./components/ListadoProveedores"
+//import ListadoEmpresasFiltrado from "./components/ListadoEmpresasFiltrado"
+//import ListadoProveedoresFiltrado from "./components/ListadoProveedoresFiltrado"
+import AltaEmpresa from "./components/AltaEmpresa"
+//import AltaProveedor from "./components/AltaProveedor"
+//import ModificarEmpresa from "./components/ModificarEmpresa"
+//import ModificarProveedor from "./components/ModificarProveedor"
+import Inicio from "./components/Inicio"
+import Home from "./pages/Home"
+//import PaginaError from "./pages/PaginaError"
 import './App.css'
 
+let router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+    //errorElement: <PaginaError />,
+    children: [
+      {
+        index:true,
+        Component: Inicio
+      },
+      /*{
+        path: "listadoempresas",
+        element: <ListadoEmpresas />,
+      },
+      {
+        path: "listadoproveedores",
+        element: <ListadoProveedores />,
+      },
+      {
+        path: "listadoempresasfacturacionmin/:facturacion",
+        element: <ListadoEmpresasFiltrado />,
+      },
+      {
+        path: "listadoproveedoresporempresa/:empresa",
+        element: <ListadoProveedoresFiltrado />,
+      },*/
+      {
+        path: "altaempresa",
+        element: <AltaEmpresa />,
+      },/*
+      {
+        path: "altaproveedor",
+        element: <AltaProveedor />,
+      },
+      {
+        path: "modificarempresa/:id",
+        element: <ModificarEmpresa />,
+      },
+      {
+        path: "modificarproveedor/:id",
+        element: <ModificarProveedor />,
+      },*/
+    ],
+  },
+]);
+
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      <RouterProvider router={router}/>
   )
 }
 
