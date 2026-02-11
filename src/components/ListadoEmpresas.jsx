@@ -133,7 +133,7 @@ function ListadoEmpresas() {
         <Typography variant="h4" align="center" sx={{ my: 3 }}>
           Listado de empresas
         </Typography>
-¡
+
         <TableContainer component={Paper}>
           <Table stickyHeader aria-label="simple table">
             <TableHead>
@@ -193,7 +193,10 @@ function ListadoEmpresas() {
                         variant="contained"
                         color="primary"
                         onClick={() =>
-                          navigate("/modificarempresa/" + row.id_empresa)
+                          {
+                            console.log("/modificarempresa/" + row.id_empresa)
+                            navigate("/modificarempresa/" + row.id_empresa)
+                            }
                         }
                       >
                         <EditIcon />

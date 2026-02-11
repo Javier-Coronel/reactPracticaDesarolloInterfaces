@@ -34,7 +34,7 @@ function Inicio() {
     >
       {/* Mensaje de bienvenida principal */}
       <Typography variant="h3" align="center">
-        Bienvenido a la mejor web de cine
+        Logistica de empresas.
       </Typography>
     </Box>
   );
