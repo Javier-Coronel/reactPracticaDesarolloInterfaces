@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Switch from "@mui/material/Switch";
+import FormControlLabel from "@mui/material/FormControlLabel"
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
+import Checkbox from "@mui/material/Checkbox"
 
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -30,7 +31,7 @@ function AltaEmpresa() {
         nombre: "",
         descripcion: "",
         fechaCreacion: "",
-        activa: "",
+        activa: true,
         facturacion: "",
         porcentajeEnBolsa: ""
     });
@@ -85,7 +86,7 @@ function AltaEmpresa() {
      * @param {React.ChangeEvent} e - Evento del cambio
      */
     function handleChange(e) {
-        setEmpresa({ ...empresa, [e.target.nombre]: e.target.value });
+        setEmpresa({ ...empresa, [e.target.name]: e.target.value });
     }
 
     /**
@@ -127,7 +128,7 @@ function AltaEmpresa() {
         };
 
         // Validación del nombre: mínimo 10 caracteres
-        if (empresa.nombre.length > 50 ||empresa.nombre.length <= 0) {
+        if (empresa.nombre.length > 50 || empresa.nombre.length <= 0) {
             valido = false;
             objetoValidacion.nombre = false;
         }
@@ -241,7 +242,7 @@ function AltaEmpresa() {
                                 />
                             </Grid>
 
-                            {/* Campo de URL de fotografía */}
+                            {/* Campo de facturacion de la empresa */}
                             <Grid item size={{ xs: 10 }}>
                                 <TextField
                                     id="facturacion"
@@ -252,6 +253,7 @@ function AltaEmpresa() {
                                     onChange={handleChange}
                                 />
                             </Grid>
+                            {/* Campo de que porcentaje de la empresa esta en bolsa */}
                             <Grid item size={{ xs: 10 }}>
                                 <TextField
                                     id="porcentajeEnBolsa"
@@ -262,13 +264,19 @@ function AltaEmpresa() {
                                     onChange={handleChange}
                                 />
                             </Grid>
+                            {/* Campo de facturacion de la empresa */}
                             <Grid item size={{ xs: 10 }}>
-                                <Switch
-                                    id="activa"
+                                <FormControlLabel
                                     label="¿Esta la empresa activa?"
-                                    name="activa"
-                                    value={empresa.activa}
-                                    onChange={handleChange}
+                                    control={
+                                        <Checkbox
+                                            id="activa"
+                                            label="¿Esta la empresa activa?"
+                                            name="activa"
+                                            value={empresa.activa}
+                                            onChange={handleChange}
+                                        />
+                                    }
                                 />
                             </Grid>
                             {/* Botón de aceptar */}
@@ -278,9 +286,11 @@ function AltaEmpresa() {
                                 sx={{ display: "flex", justifyContent: "flex-end" }}
                             >
                                 <Button
+
                                     variant="contained"
                                     sx={{ mt: 3 }}
                                     loading={isUpdating}
+                                    defaultValue={empresa.activa}
                                     loadingPosition="end"
                                     onClick={handleClick}
                                 >

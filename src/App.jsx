@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 
-//import ListadoEmpresas from "./components/ListadoEmpresas"
+import ListadoEmpresas from "./components/ListadoEmpresas"
 //import ListadoProveedores from "./components/ListadoProveedores"
 //import ListadoEmpresasFiltrado from "./components/ListadoEmpresasFiltrado"
 //import ListadoProveedoresFiltrado from "./components/ListadoProveedoresFiltrado"
@@ -23,10 +23,10 @@ let router = createBrowserRouter([
         index:true,
         Component: Inicio
       },
-      /*{
+      {
         path: "listadoempresas",
         element: <ListadoEmpresas />,
-      },
+      },/*
       {
         path: "listadoproveedores",
         element: <ListadoProveedores />,

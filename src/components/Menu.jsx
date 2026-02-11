@@ -37,9 +37,7 @@ function Menu() {
         </MDBNavbarToggler>
 
         <MDBCollapse navbar open={openBasic} className="w-100">
-          {/* Contenedor principal para el menú y los botones */}
           <MDBNavbarNav className="w-100 d-flex justify-content-between align-items-center">
-            {/* Menú de la izquierda */}
             <div className="d-flex">
               <MDBNavbarItem>
                 <MDBDropdown>
