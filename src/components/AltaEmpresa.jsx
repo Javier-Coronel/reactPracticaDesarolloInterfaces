@@ -61,6 +61,7 @@ function AltaEmpresa() {
     useEffect(() => {
         async function fetchCreateEmpresa() {
             try {
+                console.log(empresa.activa)
                 // Enviar datos del empresa al servidor
                 const respuesta = await api.post("/empresas/", empresa);
 
@@ -87,6 +88,10 @@ function AltaEmpresa() {
      */
     function handleChange(e) {
         setEmpresa({ ...empresa, [e.target.name]: e.target.value });
+    }
+
+    function handleChangeCheck(e){
+        setEmpresa({ ...empresa, [e.target.name]: e.target.checked });
     }
 
     /**
@@ -273,8 +278,10 @@ function AltaEmpresa() {
                                             id="activa"
                                             label="¿Esta la empresa activa?"
                                             name="activa"
+                                            defaultValue={empresa.activa}
+                                            checked={empresa.activa}
                                             value={empresa.activa}
-                                            onChange={handleChange}
+                                            onChange={handleChangeCheck}
                                         />
                                     }
                                 />
@@ -290,7 +297,6 @@ function AltaEmpresa() {
                                     variant="contained"
                                     sx={{ mt: 3 }}
                                     loading={isUpdating}
-                                    defaultValue={empresa.activa}
                                     loadingPosition="end"
                                     onClick={handleClick}
                                 >

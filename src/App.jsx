@@ -1,11 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 
 import ListadoEmpresas from "./components/ListadoEmpresas"
-//import ListadoProveedores from "./components/ListadoProveedores"
+import ListadoProveedores from "./components/ListadoProveedores"
 //import ListadoEmpresasFiltrado from "./components/ListadoEmpresasFiltrado"
 //import ListadoProveedoresFiltrado from "./components/ListadoProveedoresFiltrado"
 import AltaEmpresa from "./components/AltaEmpresa"
-//import AltaProveedor from "./components/AltaProveedor"
+import AltaProveedor from "./components/AltaProveedor"
 import ModificarEmpresa from "./components/ModificarEmpresa"
 //import ModificarProveedor from "./components/ModificarProveedor"
 import Inicio from "./components/Inicio"
@@ -26,11 +26,11 @@ let router = createBrowserRouter([
       {
         path: "listadoempresas",
         element: <ListadoEmpresas />,
-      },/*
+      },
       {
         path: "listadoproveedores",
         element: <ListadoProveedores />,
-      },
+      },/*
       {
         path: "listadoempresasfacturacionmin/:facturacion",
         element: <ListadoEmpresasFiltrado />,
@@ -42,11 +42,11 @@ let router = createBrowserRouter([
       {
         path: "altaempresa",
         element: <AltaEmpresa />,
-      },/*
+      },
       {
         path: "altaproveedor",
         element: <AltaProveedor />,
-      },*/
+      },
       {
         path: "modificarempresa/:id_empresa",
         element: <ModificarEmpresa />,

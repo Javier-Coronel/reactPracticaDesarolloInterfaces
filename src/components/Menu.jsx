@@ -56,7 +56,7 @@ function Menu() {
                 </MDBDropdown>
               </MDBNavbarItem>
               {
-                /*
+                
               <MDBNavbarItem>
                 <MDBDropdown>
                   <MDBDropdownToggle tag="a" className="nav-link" role="button">
@@ -72,7 +72,7 @@ function Menu() {
                     </Link>
                   </MDBDropdownMenu>
                 </MDBDropdown>
-              </MDBNavbarItem>*/
+              </MDBNavbarItem>
               }
             </div>
 

@@ -109,6 +109,10 @@ function ModificarEmpresa() {
         setEmpresa({ ...empresa, [e.target.name]: e.target.value });
     }
 
+    function handleChangeCheck(e){
+        setEmpresa({ ...empresa, [e.target.name]: e.target.checked });
+    }
+
     /**
      * Maneja el click en el botón de aceptar
      * Valida los datos antes de enviarlos
@@ -293,8 +297,10 @@ function ModificarEmpresa() {
                                             id="activa"
                                             label="¿Esta la empresa activa?"
                                             name="activa"
+                                            defaultValue={empresa.activa}
+                                            checked={empresa.activa}
                                             value={empresa.activa}
-                                            onChange={handleChange}
+                                            onChange={handleChangeCheck}
                                         />
                                     }
                                 />

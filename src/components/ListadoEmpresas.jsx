@@ -36,9 +36,7 @@ import { useNavigate } from "react-router-dom";
  * 
  * Características:
  * - Obtiene datos de empresas del servidor al montar el componente
- * - Muestra tabla con información: nombre, fecha nacimiento, biografía, foto
  * - Permite eliminar empresas
- * - Permite editar empresas (navega a /empresas/edit/:id)
  * - Botón flotante para descargar la tabla como PDF
  * - Manejo de errores y estados vacíos
  * 
