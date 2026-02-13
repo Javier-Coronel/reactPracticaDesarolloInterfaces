@@ -36,9 +36,9 @@ import { useNavigate } from "react-router-dom";
  * 
  * Características:
  * - Obtiene datos de proveedores del servidor al montar el componente
- * - Muestra tabla con información: nombre, fecha nacimiento, biografía, foto
+ * - Muestra tabla la información correspondiente
  * - Permite eliminar proveedores
- * - Permite editar proveedores (navega a /proveedores/edit/:id)
+ * - Permite editar proveedores (navega a /modificarproveedor/:id)
  * - Botón flotante para descargar la tabla como PDF
  * - Manejo de errores y estados vacíos
  * 
@@ -212,7 +212,7 @@ function ListadoProveedores() {
       <Fab
         color="secondary"
         aria-label="imprimir"
-        onClick={() => generatePDF("pdf-content", "proveedores")}
+        onClick={() => window.print()}
         sx={{
           position: "fixed",
           top: 85,

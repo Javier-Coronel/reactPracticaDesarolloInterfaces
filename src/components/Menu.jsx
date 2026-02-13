@@ -52,6 +52,10 @@ function Menu() {
                     <Link to="/listadoempresas" style={{ color: "#4f4f4f" }}>
                       <MDBDropdownItem link>Listado de empresas</MDBDropdownItem>
                     </Link>
+                    
+                    <Link to="/listadoempresasfacturacionmin" style={{ color: "#4f4f4f" }}>
+                      <MDBDropdownItem link>Listado de empresas con una facturacion minima.</MDBDropdownItem>
+                    </Link>
                   </MDBDropdownMenu>
                 </MDBDropdown>
               </MDBNavbarItem>
@@ -69,6 +73,10 @@ function Menu() {
 
                     <Link to="/listadoproveedores" style={{ color: "#4f4f4f" }}>
                       <MDBDropdownItem link>Listado de proveedores</MDBDropdownItem>
+                    </Link>
+
+                    <Link to="/listadoproveedoresporempresa" style={{ color: "#4f4f4f" }}>
+                      <MDBDropdownItem link>Listado de proveedores por empresa</MDBDropdownItem>
                     </Link>
                   </MDBDropdownMenu>
                 </MDBDropdown>

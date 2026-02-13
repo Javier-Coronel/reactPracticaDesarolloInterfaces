@@ -164,6 +164,12 @@ function ModificarEmpresa() {
             objetoValidacion.fechaCreacion = false;
         }
 
+        // Validación del porcentaje: no puede ser mayor que 100
+        if (!empresa.porcentajeEnBolsa>100) {
+            valido = false;
+            objetoValidacion.porcentajeEnBolsa = false;
+        }
+
         // Actualizar estado de validación
         setIsCamposValidos(objetoValidacion);
 

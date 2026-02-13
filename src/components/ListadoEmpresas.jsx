@@ -141,7 +141,7 @@ function ListadoEmpresas() {
                 <TableCell align="center">Fecha creacion</TableCell>
                 <TableCell>¿Esta activa?</TableCell>
                 <TableCell>Facturacion</TableCell>
-                <TableCell>Porcentage en bolsa</TableCell>
+                <TableCell>Porcentaje en bolsa</TableCell>
                 <TableCell align="center">Acciones</TableCell>
               </TableRow>
             </TableHead>

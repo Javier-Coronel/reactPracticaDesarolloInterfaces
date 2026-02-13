@@ -71,7 +71,7 @@ function AltaEmpresa() {
                 setOpenDialog(true);
             } catch (error) {
                 // Mostrar mensaje de error
-                setDialogMessage(error.mensaje || "Error al crear el empresa");
+                setDialogMessage(error.mensaje || "Error al crear la empresa");
                 setDialogSeverity("error");
                 setOpenDialog(true);
             }
@@ -143,6 +143,12 @@ function AltaEmpresa() {
             objetoValidacion.fechaCreacion = false;
         }
 
+        // Validación del porcentaje: no puede ser mayor que 100
+        if (empresa.porcentajeEnBolsa>100) {
+            valido = false;
+            objetoValidacion.porcentajeEnBolsa = false;
+        }
+        console.log(objetoValidacion + " " + valido)
         // Actualizar estado de validación
         setIsCamposValidos(objetoValidacion);
 
@@ -266,6 +272,15 @@ function AltaEmpresa() {
                                     type="number"
                                     value={empresa.porcentajeEnBolsa}
                                     onChange={handleChange}
+                                    slotProps={{
+                                            textField: {
+                                                required: true,
+                                                error: !isCamposValidos.porcentajeEnBolsa,
+                                                helperText: !isCamposValidos.porcentajeEnBolsa
+                                                    ? "El porcentaje no puede ser mayor a 100"
+                                                    : "",
+                                            },
+                                        }}
                                 />
                             </Grid>
                             {/* Campo de facturacion de la empresa */}

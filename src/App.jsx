@@ -2,8 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 
 import ListadoEmpresas from "./components/ListadoEmpresas"
 import ListadoProveedores from "./components/ListadoProveedores"
-//import ListadoEmpresasFiltrado from "./components/ListadoEmpresasFiltrado"
-//import ListadoProveedoresFiltrado from "./components/ListadoProveedoresFiltrado"
+import ListadoEmpresasFiltrado from "./components/ListadoEmpresasFiltrado"
+import ListadoProveedoresFiltrado from "./components/ListadoProveedoresFiltrado"
 import AltaEmpresa from "./components/AltaEmpresa"
 import AltaProveedor from "./components/AltaProveedor"
 import ModificarEmpresa from "./components/ModificarEmpresa"
@@ -30,15 +30,15 @@ let router = createBrowserRouter([
       {
         path: "listadoproveedores",
         element: <ListadoProveedores />,
-      },/*
+      },
       {
-        path: "listadoempresasfacturacionmin/:facturacion",
+        path: "listadoempresasfacturacionmin/",
         element: <ListadoEmpresasFiltrado />,
       },
       {
-        path: "listadoproveedoresporempresa/:empresa",
+        path: "listadoproveedoresporempresa/",
         element: <ListadoProveedoresFiltrado />,
-      },*/
+      },
       {
         path: "altaempresa",
         element: <AltaEmpresa />,
