@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/ListadoProveedores.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/ListadoProveedores.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * @fileoverview Componente para mostrar el listado de proveedores en una tabla
  * 
  * Muestra todos los proveedores registrados en la base de datos en formato tabla.
@@ -105,70 +133,70 @@ function ListadoProveedores() {
   // Mostrar mensaje si hay error
   if (error != null) {
     return (
-      <>
-        <Typography variant="h5" align="center" sx={{ mt: 3 }}>
+      &lt;>
+        &lt;Typography variant="h5" align="center" sx={{ mt: 3 }}>
           {error}
-        </Typography>
-      </>
+        &lt;/Typography>
+      &lt;/>
     );
   }
 
   // Mostrar mensaje si no hay proveedores
   if (!datos || datos.length === 0) {
     return (
-      <>
-        <Typography variant="h5" align="center" sx={{ mt: 3 }}>
+      &lt;>
+        &lt;Typography variant="h5" align="center" sx={{ mt: 3 }}>
           No hay proveedores disponibles
-        </Typography>
-      </>
+        &lt;/Typography>
+      &lt;/>
     );
   }
 
   return (
-    <>
+    &lt;>
       {/* Contenedor con ID para capturar como PDF */}
-      <Box id="pdf-content">
+      &lt;Box id="pdf-content">
         {/* Título */}
-        <Typography variant="h4" align="center" sx={{ my: 3 }}>
+        &lt;Typography variant="h4" align="center" sx={{ my: 3 }}>
           Listado de proveedores
-        </Typography>
+        &lt;/Typography>
 
-        <TableContainer component={Paper}>
-          <Table stickyHeader aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Nombre</TableCell>
-                <TableCell align="center">Fecha de creacion</TableCell>
-                <TableCell>Recurso</TableCell>
-                <TableCell>Cantidad del recurso</TableCell>
-                <TableCell>Facturacion</TableCell>
-                <TableCell>Prove a la empresa:</TableCell>
-                <TableCell>¿Esta activa?</TableCell>
-                <TableCell align="center">Acciones</TableCell>
-              </TableRow>
-            </TableHead>
+        &lt;TableContainer component={Paper}>
+          &lt;Table stickyHeader aria-label="simple table">
+            &lt;TableHead>
+              &lt;TableRow>
+                &lt;TableCell>Nombre&lt;/TableCell>
+                &lt;TableCell align="center">Fecha de creacion&lt;/TableCell>
+                &lt;TableCell>Recurso&lt;/TableCell>
+                &lt;TableCell>Cantidad del recurso&lt;/TableCell>
+                &lt;TableCell>Facturacion&lt;/TableCell>
+                &lt;TableCell>Prove a la empresa:&lt;/TableCell>
+                &lt;TableCell>¿Esta activa?&lt;/TableCell>
+                &lt;TableCell align="center">Acciones&lt;/TableCell>
+              &lt;/TableRow>
+            &lt;/TableHead>
 
-            <TableBody>
+            &lt;TableBody>
               {datos.map((row) => (
-                <TableRow key={row.id_proveedor}>
-                  <TableCell>{row.nombre}</TableCell>
-                  <TableCell align="center">{row.fechaCreacion}</TableCell>
-                  <TableCell>{row.recurso}</TableCell>
-                  <TableCell>{row.cantidad}</TableCell>
-                  <TableCell>{row.facturacion}</TableCell>
-                  <TableCell>{row.empresa?row.empresa.nombre : "Ninguna"}</TableCell>
+                &lt;TableRow key={row.id_proveedor}>
+                  &lt;TableCell>{row.nombre}&lt;/TableCell>
+                  &lt;TableCell align="center">{row.fechaCreacion}&lt;/TableCell>
+                  &lt;TableCell>{row.recurso}&lt;/TableCell>
+                  &lt;TableCell>{row.cantidad}&lt;/TableCell>
+                  &lt;TableCell>{row.facturacion}&lt;/TableCell>
+                  &lt;TableCell>{row.empresa?row.empresa.nombre : "Ninguna"}&lt;/TableCell>
                   
-                  <TableCell align="center">
-                    <Checkbox
+                  &lt;TableCell align="center">
+                    &lt;Checkbox
                       checked={row.activa}
                       disabled
                       slotProps={{
                         input: { 'aria-label': 'controlled' },
                       }}
                     />
-                  </TableCell>
-                  <TableCell>
-                    <Stack
+                  &lt;/TableCell>
+                  &lt;TableCell>
+                    &lt;Stack
                       sx={{ width: "100%" }}
                       direction={{ xs: "column", sm: "row" }}
                       spacing={1}
@@ -176,16 +204,16 @@ function ListadoProveedores() {
                       alignItems="center"
                     >
                       {/* Botón para eliminar */}
-                      <Button
+                      &lt;Button
                         variant="contained"
                         color="error"
                         onClick={() => handleDelete(row.id_proveedor)}
                       >
-                        <DeleteIcon />
-                      </Button>
+                        &lt;DeleteIcon />
+                      &lt;/Button>
 
                       {/* Botón para editar */}
-                      <Button
+                      &lt;Button
                         sx={{ ml: 1 }}
                         variant="contained"
                         color="primary"
@@ -196,19 +224,19 @@ function ListadoProveedores() {
                             }
                         }
                       >
-                        <EditIcon />
-                      </Button>
-                    </Stack>
-                  </TableCell>
-                </TableRow>
+                        &lt;EditIcon />
+                      &lt;/Button>
+                    &lt;/Stack>
+                  &lt;/TableCell>
+                &lt;/TableRow>
               ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Box>
+            &lt;/TableBody>
+          &lt;/Table>
+        &lt;/TableContainer>
+      &lt;/Box>
 
       {/* Botón flotante para descargar PDF */}
-      <Fab
+      &lt;Fab
         color="success"
         aria-label="imprimir"
         onClick={() => window.print()}
@@ -218,10 +246,32 @@ function ListadoProveedores() {
           right: 30,
         }}
       >
-        <PrintIcon />
-      </Fab>
-    </>
+        &lt;PrintIcon />
+      &lt;/Fab>
+    &lt;/>
   );
 }
 
-export default ListadoProveedores;
+export default ListadoProveedores;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-api.html">api</a></li><li><a href="module-components_AltaEmpresa.html">components/AltaEmpresa</a></li><li><a href="module-components_AltaProveedor.html">components/AltaProveedor</a></li><li><a href="module-components_Inicio.html">components/Inicio</a></li><li><a href="module-components_ListadoEmpresas.html">components/ListadoEmpresas</a></li><li><a href="module-components_ListadoEmpresasFiltrado.html">components/ListadoEmpresasFiltrado</a></li><li><a href="module-components_ListadoEmpresasFiltroPDF.html">components/ListadoEmpresasFiltroPDF</a></li><li><a href="module-components_ListadoProveedores.html">components/ListadoProveedores</a></li><li><a href="module-components_ListadoProveedoresFiltrado.html">components/ListadoProveedoresFiltrado</a></li><li><a href="module-components_ModificarEmpresa.html">components/ModificarEmpresa</a></li><li><a href="module-components_ModificarProveedor.html">components/ModificarProveedor</a></li><li><a href="module-utils_generatePDF.html">utils/generatePDF</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Menu">Menu</a></li><li><a href="global.html#PaginaError">PaginaError</a></li><li><a href="global.html#router">router</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Fri Feb 13 2026 21:48:35 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

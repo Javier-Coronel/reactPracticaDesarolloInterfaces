@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Menu.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Menu.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {
+  MDBCollapse,
+  MDBContainer,
+  MDBDropdown,
+  MDBDropdownItem,
+  MDBDropdownMenu,
+  MDBDropdownToggle,
+  MDBIcon,
+  MDBNavbar,
+  MDBNavbarItem,
+  MDBNavbarNav,
+  MDBNavbarToggler,
+} from "mdb-react-ui-kit";
+import { useState } from "react";
+import { Link } from "react-router";
+
+/**
+ * Componente para el menú de navegación.
+ * @component
+ * @returns {JSX.Element} JSX element del componente Menu.
+ */
+function Menu() {
+  const [openBasic, setOpenBasic] = useState(false);
+
+
+  return (
+    &lt;MDBNavbar expand="lg" light bgColor="light">
+      &lt;MDBContainer fluid>
+
+        &lt;MDBNavbarToggler
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          onClick={() => setOpenBasic(!openBasic)}
+        >
+          &lt;MDBIcon icon="bars" fas />
+        &lt;/MDBNavbarToggler>
+
+        &lt;MDBCollapse navbar open={openBasic} className="w-100">
+          &lt;MDBNavbarNav className="w-100 d-flex justify-content-between align-items-center">
+            &lt;div className="d-flex">
+              &lt;MDBNavbarItem>
+                &lt;MDBDropdown>
+                  &lt;MDBDropdownToggle tag="a" className="nav-link" role="button">
+                    Empresas
+                  &lt;/MDBDropdownToggle>
+                  &lt;MDBDropdownMenu>
+                    &lt;Link to="/altaempresa" style={{ color: "#4f4f4f" }}>
+                      &lt;MDBDropdownItem link>Creacion de empresa&lt;/MDBDropdownItem>
+                    &lt;/Link>
+
+                    &lt;Link to="/listadoempresas" style={{ color: "#4f4f4f" }}>
+                      &lt;MDBDropdownItem link>Listado de empresas&lt;/MDBDropdownItem>
+                    &lt;/Link>
+                    
+                    &lt;Link to="/listadoempresasfacturacionmin" style={{ color: "#4f4f4f" }}>
+                      &lt;MDBDropdownItem link>Listado de empresas con una facturacion minima.&lt;/MDBDropdownItem>
+                    &lt;/Link>
+                  &lt;/MDBDropdownMenu>
+                &lt;/MDBDropdown>
+              &lt;/MDBNavbarItem>
+              {
+                
+              &lt;MDBNavbarItem>
+                &lt;MDBDropdown>
+                  &lt;MDBDropdownToggle tag="a" className="nav-link" role="button">
+                    Proveedores
+                  &lt;/MDBDropdownToggle>
+                  &lt;MDBDropdownMenu>
+                    &lt;Link to="/altaproveedor" style={{ color: "#4f4f4f" }}>
+                      &lt;MDBDropdownItem link>Creacion de proveedor&lt;/MDBDropdownItem>
+                    &lt;/Link>
+
+                    &lt;Link to="/listadoproveedores" style={{ color: "#4f4f4f" }}>
+                      &lt;MDBDropdownItem link>Listado de proveedores&lt;/MDBDropdownItem>
+                    &lt;/Link>
+
+                    &lt;Link to="/listadoproveedoresporempresa" style={{ color: "#4f4f4f" }}>
+                      &lt;MDBDropdownItem link>Listado de proveedores por empresa&lt;/MDBDropdownItem>
+                    &lt;/Link>
+                  &lt;/MDBDropdownMenu>
+                &lt;/MDBDropdown>
+              &lt;/MDBNavbarItem>
+              }
+            &lt;/div>
+
+            
+          &lt;/MDBNavbarNav>
+        &lt;/MDBCollapse>
+      &lt;/MDBContainer>
+    &lt;/MDBNavbar>
+  );
+}
+export default Menu;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-api.html">api</a></li><li><a href="module-components_AltaEmpresa.html">components/AltaEmpresa</a></li><li><a href="module-components_AltaProveedor.html">components/AltaProveedor</a></li><li><a href="module-components_Inicio.html">components/Inicio</a></li><li><a href="module-components_ListadoEmpresas.html">components/ListadoEmpresas</a></li><li><a href="module-components_ListadoEmpresasFiltrado.html">components/ListadoEmpresasFiltrado</a></li><li><a href="module-components_ListadoEmpresasFiltroPDF.html">components/ListadoEmpresasFiltroPDF</a></li><li><a href="module-components_ListadoProveedores.html">components/ListadoProveedores</a></li><li><a href="module-components_ListadoProveedoresFiltrado.html">components/ListadoProveedoresFiltrado</a></li><li><a href="module-components_ModificarEmpresa.html">components/ModificarEmpresa</a></li><li><a href="module-components_ModificarProveedor.html">components/ModificarProveedor</a></li><li><a href="module-utils_generatePDF.html">utils/generatePDF</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Menu">Menu</a></li><li><a href="global.html#PaginaError">PaginaError</a></li><li><a href="global.html#router">router</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Fri Feb 13 2026 21:48:35 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

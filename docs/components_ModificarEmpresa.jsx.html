@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/ModificarEmpresa.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/ModificarEmpresa.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * @fileoverview Componente para la modificacion de empresas en la base de datos
  * 
  * @module components/ModificarEmpresa
@@ -175,7 +203,7 @@ function ModificarEmpresa() {
         };
 
         // Validación del nombre: mínimo 10 caracteres
-        if (empresa.nombre.length > 50 || empresa.nombre.length <= 0) {
+        if (empresa.nombre.length > 50 || empresa.nombre.length &lt;= 0) {
             valido = false;
             objetoValidacion.nombre = false;
         }
@@ -199,9 +227,9 @@ function ModificarEmpresa() {
     }
 
     return (
-        <>
+        &lt;>
             {/* Contenedor principal */}
-            <Grid
+            &lt;Grid
                 container
                 spacing={2}
                 sx={{
@@ -210,15 +238,15 @@ function ModificarEmpresa() {
                 }}
             >
                 {/* Tarjeta del formulario */}
-                <Grid item size={{ xs: 12, sm: 9, md: 7 }}>
-                    <Paper elevation={6} sx={{ mt: 3, p: 3, maxWidth: 900, mx: "auto" }}>
+                &lt;Grid item size={{ xs: 12, sm: 9, md: 7 }}>
+                    &lt;Paper elevation={6} sx={{ mt: 3, p: 3, maxWidth: 900, mx: "auto" }}>
                         {/* Título del formulario */}
-                        <Typography variant="h4" align="center" sx={{ mb: 3 }}>
+                        &lt;Typography variant="h4" align="center" sx={{ mb: 3 }}>
                             Actualización de la empresa {empresa.nombre}
-                        </Typography>
+                        &lt;/Typography>
 
                         {/* Grid con los campos */}
-                        <Grid
+                        &lt;Grid
                             container
                             spacing={2}
                             sx={{
@@ -227,8 +255,8 @@ function ModificarEmpresa() {
                             }}
                         >
                             {/* Campo de nombre */}
-                            <Grid item size={{ xs: 10 }}>
-                                <TextField
+                            &lt;Grid item size={{ xs: 10 }}>
+                                &lt;TextField
                                     required
                                     fullWidth
                                     id="nombre"
@@ -240,18 +268,18 @@ function ModificarEmpresa() {
                                     onChange={handleChange}
                                     error={!isCamposValidos.nombre}
                                     helperText={
-                                        !isCamposValidos.nombre && "El nombre es obligatorio."
+                                        !isCamposValidos.nombre &amp;&amp; "El nombre es obligatorio."
                                     }
                                 />
-                            </Grid>
+                            &lt;/Grid>
 
                             {/* Campo de fecha de nacimiento */}
-                            <Grid item size={{ xs: 10 }}>
-                                <LocalizationProvider
+                            &lt;Grid item size={{ xs: 10 }}>
+                                &lt;LocalizationProvider
                                     dateAdapter={AdapterDayjs}
                                     adapterLocale="es"
                                 >
-                                    <DatePicker
+                                    &lt;DatePicker
                                         label="Fecha de creacion"
                                         name="fechaCreacion"
                                         minDate={dayjs("1800-01-01")}
@@ -275,12 +303,12 @@ function ModificarEmpresa() {
                                             })
                                         }
                                     />
-                                </LocalizationProvider>
-                            </Grid>
+                                &lt;/LocalizationProvider>
+                            &lt;/Grid>
 
                             {/* Campo de descripcion */}
-                            <Grid item size={{ xs: 10 }}>
-                                <TextField
+                            &lt;Grid item size={{ xs: 10 }}>
+                                &lt;TextField
                                     fullWidth
                                     id="descripcion"
                                     label="Descripcion"
@@ -293,11 +321,11 @@ function ModificarEmpresa() {
                                     value={empresa.descripcion}
                                     onChange={handleChange}
                                 />
-                            </Grid>
+                            &lt;/Grid>
 
                             {/* Campo de facturacion de la empresa */}
-                            <Grid item size={{ xs: 10 }}>
-                                <TextField
+                            &lt;Grid item size={{ xs: 10 }}>
+                                &lt;TextField
                                     id="facturacion"
                                     label="Facturacion de la empresa"
                                     name="facturacion"
@@ -305,10 +333,10 @@ function ModificarEmpresa() {
                                     value={empresa.facturacion}
                                     onChange={handleChange}
                                 />
-                            </Grid>
+                            &lt;/Grid>
                             {/* Campo de que porcentaje de la empresa esta en bolsa */}
-                            <Grid item size={{ xs: 10 }}>
-                                <TextField
+                            &lt;Grid item size={{ xs: 10 }}>
+                                &lt;TextField
                                     id="porcentajeEnBolsa"
                                     label="Porcentaje en bolsa de la empresa"
                                     name="porcentajeEnBolsa"
@@ -316,13 +344,13 @@ function ModificarEmpresa() {
                                     value={empresa.porcentajeEnBolsa}
                                     onChange={handleChange}
                                 />
-                            </Grid>
+                            &lt;/Grid>
                             {/* Campo de facturacion de la empresa */}
-                            <Grid item size={{ xs: 10 }}>
-                                <FormControlLabel
+                            &lt;Grid item size={{ xs: 10 }}>
+                                &lt;FormControlLabel
                                     label="¿Esta la empresa activa?"
                                     control={
-                                        <Checkbox
+                                        &lt;Checkbox
                                             id="activa"
                                             label="¿Esta la empresa activa?"
                                             name="activa"
@@ -333,14 +361,14 @@ function ModificarEmpresa() {
                                         />
                                     }
                                 />
-                            </Grid>
+                            &lt;/Grid>
                             {/* Botón de aceptar */}
-                            <Grid
+                            &lt;Grid
                                 item
                                 size={{ xs: 10 }}
                                 sx={{ display: "flex", justifyContent: "flex-end" }}
                             >
-                                <Button
+                                &lt;Button
 
                                     variant="contained"
                                     sx={{ mt: 3 }}
@@ -349,34 +377,56 @@ function ModificarEmpresa() {
                                     onClick={handleClick}
                                 >
                                     Aceptar
-                                </Button>
-                            </Grid>
-                        </Grid>
-                    </Paper>
-                </Grid>
-            </Grid>
+                                &lt;/Button>
+                            &lt;/Grid>
+                        &lt;/Grid>
+                    &lt;/Paper>
+                &lt;/Grid>
+            &lt;/Grid>
 
             {/* Diálogo de resultado */}
-            <Dialog
+            &lt;Dialog
                 open={openDialog}
                 onClose={handleDialogClose}
                 disableEscapeKeyDown
                 aria-labelledby="result-dialog-title"
             >
-                <DialogTitle id="result-dialog-title">
+                &lt;DialogTitle id="result-dialog-title">
                     {dialogSeverity === "success" ? "Operación correcta" : "Error"}
-                </DialogTitle>
-                <DialogContent dividers>
-                    <Alert severity={dialogSeverity} variant="filled">
+                &lt;/DialogTitle>
+                &lt;DialogContent dividers>
+                    &lt;Alert severity={dialogSeverity} variant="filled">
                         {dialogMessage}
-                    </Alert>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleDialogClose}>OK</Button>
-                </DialogActions>
-            </Dialog>
-        </>
+                    &lt;/Alert>
+                &lt;/DialogContent>
+                &lt;DialogActions>
+                    &lt;Button onClick={handleDialogClose}>OK&lt;/Button>
+                &lt;/DialogActions>
+            &lt;/Dialog>
+        &lt;/>
     );
 }
 
-export default ModificarEmpresa;
+export default ModificarEmpresa;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-api.html">api</a></li><li><a href="module-components_AltaEmpresa.html">components/AltaEmpresa</a></li><li><a href="module-components_AltaProveedor.html">components/AltaProveedor</a></li><li><a href="module-components_Inicio.html">components/Inicio</a></li><li><a href="module-components_ListadoEmpresas.html">components/ListadoEmpresas</a></li><li><a href="module-components_ListadoEmpresasFiltrado.html">components/ListadoEmpresasFiltrado</a></li><li><a href="module-components_ListadoEmpresasFiltroPDF.html">components/ListadoEmpresasFiltroPDF</a></li><li><a href="module-components_ListadoProveedores.html">components/ListadoProveedores</a></li><li><a href="module-components_ListadoProveedoresFiltrado.html">components/ListadoProveedoresFiltrado</a></li><li><a href="module-components_ModificarEmpresa.html">components/ModificarEmpresa</a></li><li><a href="module-components_ModificarProveedor.html">components/ModificarProveedor</a></li><li><a href="module-utils_generatePDF.html">utils/generatePDF</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Menu">Menu</a></li><li><a href="global.html#PaginaError">PaginaError</a></li><li><a href="global.html#router">router</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Fri Feb 13 2026 21:48:35 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

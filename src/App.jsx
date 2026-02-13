@@ -12,7 +12,9 @@ import Inicio from "./components/Inicio"
 import Home from "./pages/Home"
 //import PaginaError from "./pages/PaginaError"
 import './App.css'
-
+/**
+ * Rutas de la aplicación
+ */
 let router = createBrowserRouter([
   {
     path: "/",

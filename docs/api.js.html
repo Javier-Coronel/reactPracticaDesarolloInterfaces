@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: api.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: api.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @fileoverview Módulo de configuración de Axios para comunicación con el backend
+ * 
+ * Este módulo exporta una instancia configurada de Axios que se utiliza en toda la aplicación
+ * para realizar peticiones HTTP al servidor backend. Incluye interceptores para el manejo
+ * centralizado de errores y normalización de respuestas.
+ * 
+ * @module api
+ * @requires axios
+ */
+
+import axios from 'axios';
+
+/**
+ * Instancia configurada de Axios para comunicación con el backend
+ * 
+ * Características:
+ * - Base URL: http://localhost:3000/api
+ * - Timeout: 5000ms (5 segundos)
+ * - Content-Type: application/json
+ * - Incluye interceptores para manejo de errores
+ * 
+ * @type {AxiosInstance}
+ * @constant
+ */
+const api = axios.create({
+  baseURL: window.__APP_CONFIG__.API_URL,
+  timeout: 5000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+/**
+ * Interceptor de respuesta para manejo centralizado de errores y normalización de datos
+ * 
+ * Este interceptor se aplica a todas las respuestas de Axios y:
+ * 1. Extrae los datos del response en caso de éxito
+ * 2. Maneja diferentes tipos de errores (4xx, 5xx, sin respuesta, etc.)
+ * 3. Genera mensajes de error descriptivos
+ * 4. Registra información en consola para debugging
+ * 
+ * @callback responseInterceptor
+ * @param {AxiosResponse} response - Respuesta exitosa del servidor
+ * @returns {Object} Los datos normalizados de la respuesta
+ */
+api.interceptors.response.use(
+  (response) => {
+    // Si la respuesta es exitosa, retornamos los datos normalizados
+    return response.data;
+  },
+  (error) => {
+    // Inicializamos un objeto de error estándar
+    let respuestaError = {
+      ok: false,
+      datos: null,
+      mensaje: 'Error desconocido',
+    };
+
+    // Manejo centralizado de errores según su tipo
+    if (error.response) {
+      // El servidor respondió con un código de estado fuera del rango 2xx
+      respuestaError.mensaje = error.response.data?.mensaje || 
+                         `Error: ${error.response.status} ${error.response.statusText}`;
+      
+      // Registros específicos según el código de estado HTTP
+      if (error.response.status === 404) {
+        console.warn(`Recurso no encontrado (404): ${error.config.url}`);
+      } else if (error.response.status === 400) {
+        console.warn(`Solicitud inválida (400): ${error.config.url}`);
+      } else if (error.response.status >= 500) {
+        console.error(`Error del servidor (${error.response.status}): ${error.config.url}`);
+      }
+    } else if (error.request) {
+      // La solicitud fue realizada pero el servidor no respondió
+      respuestaError.mensaje = 'No hay respuesta del servidor. Verifica tu conexión.';
+      console.error('No hay respuesta del servidor:', error.request);
+    } else {
+      // Algo sucedió al preparar la solicitud (ej: construcción de la URL)
+      respuestaError.mensaje = error.message || 'Error al realizar la solicitud';
+      console.error('Error en la preparación de la solicitud:', error.message);
+    }
+
+    return Promise.reject(respuestaError);
+  }
+);
+
+export default api;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-api.html">api</a></li><li><a href="module-components_AltaEmpresa.html">components/AltaEmpresa</a></li><li><a href="module-components_AltaProveedor.html">components/AltaProveedor</a></li><li><a href="module-components_Inicio.html">components/Inicio</a></li><li><a href="module-components_ListadoEmpresas.html">components/ListadoEmpresas</a></li><li><a href="module-components_ListadoEmpresasFiltrado.html">components/ListadoEmpresasFiltrado</a></li><li><a href="module-components_ListadoEmpresasFiltroPDF.html">components/ListadoEmpresasFiltroPDF</a></li><li><a href="module-components_ListadoProveedores.html">components/ListadoProveedores</a></li><li><a href="module-components_ListadoProveedoresFiltrado.html">components/ListadoProveedoresFiltrado</a></li><li><a href="module-components_ModificarEmpresa.html">components/ModificarEmpresa</a></li><li><a href="module-components_ModificarProveedor.html">components/ModificarProveedor</a></li><li><a href="module-utils_generatePDF.html">utils/generatePDF</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Menu">Menu</a></li><li><a href="global.html#PaginaError">PaginaError</a></li><li><a href="global.html#router">router</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Fri Feb 13 2026 21:48:35 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

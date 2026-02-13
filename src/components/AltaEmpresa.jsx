@@ -1,3 +1,12 @@
+/**
+ * @fileoverview Componente para la alta de empresas en la base de datos
+ * 
+ * @module components/AltaEmpresa
+ * @requires react
+ * @requires @mui/material
+ * @requires ../api
+ */
+
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
@@ -21,7 +30,17 @@ import dayjs from "dayjs";
 import "dayjs/locale/es";
 import api from "../api";
 
-
+/**
+ * Componente que permite dar de alta a una empresa
+ * 
+ * 
+ * Características:
+ * - Permite establecer todas las propiedades de una empresa
+ * - Manejo de errores, estados vacíos y validacion de datos
+ * 
+ * @component
+ * @returns {JSX.Element} Formulario para dar de alta a una empresa
+ */
 function AltaEmpresa() {
     // Hook para navegación programática
     const navigate = useNavigate();
@@ -89,7 +108,11 @@ function AltaEmpresa() {
     function handleChange(e) {
         setEmpresa({ ...empresa, [e.target.name]: e.target.value });
     }
-
+    
+    /**
+     * Maneja los cambios en los checkboxs del formulario
+     * @param {React.ChangeEvent} e - Evento del cambio de checkbox
+     */
     function handleChangeCheck(e){
         setEmpresa({ ...empresa, [e.target.name]: e.target.checked });
     }

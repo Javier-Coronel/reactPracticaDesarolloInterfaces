@@ -21,6 +21,7 @@
     "axios": "^1.13.4",
     "dayjs": "^1.11.19",
     "html2canvas": "^1.4.1",
+    "jsdoc": "^4.0.5",
     "jspdf": "^2.5.2",
     "mdb-react-ui-kit": "^9.0.0",
     "react": "^18.3.1",

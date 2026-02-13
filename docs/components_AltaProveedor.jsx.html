@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/AltaProveedor.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/AltaProveedor.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * @fileoverview Componente para la alta de proveedores en la base de datos
  * 
  * @module components/AltaProveedor
@@ -176,7 +204,7 @@ function AltaProveedor() {
       empresaIdEmpresa: true
     };
 
-    if (proveedor.nombre.length > 50 || proveedor.nombre.length <= 0) {
+    if (proveedor.nombre.length > 50 || proveedor.nombre.length &lt;= 0) {
       valido = false;
       objetoValidacion.nombre = false;
     }
@@ -194,9 +222,9 @@ function AltaProveedor() {
   }
 
   return (
-    <>
+    &lt;>
       {/* Contenedor principal */}
-      <Grid
+      &lt;Grid
         container
         spacing={2}
         sx={{
@@ -205,15 +233,15 @@ function AltaProveedor() {
         }}
       >
         {/* Tarjeta del formulario */}
-        <Grid item size={{ xs: 12, sm: 9, md: 7 }}>
-          <Paper elevation={6} sx={{ mt: 3, p: 3, maxWidth: 900, mx: "auto" }}>
+        &lt;Grid item size={{ xs: 12, sm: 9, md: 7 }}>
+          &lt;Paper elevation={6} sx={{ mt: 3, p: 3, maxWidth: 900, mx: "auto" }}>
             {/* Título del formulario */}
-            <Typography variant="h4" align="center" sx={{ mb: 3 }}>
+            &lt;Typography variant="h4" align="center" sx={{ mb: 3 }}>
               Creacion del proveedor
-            </Typography>
+            &lt;/Typography>
 
             {/* Grid con los campos */}
-            <Grid
+            &lt;Grid
               container
               spacing={2}
               sx={{
@@ -222,8 +250,8 @@ function AltaProveedor() {
               }}
             >
               {/* Campo de nombre */}
-              <Grid item size={{ xs: 10 }}>
-                <TextField
+              &lt;Grid item size={{ xs: 10 }}>
+                &lt;TextField
                   required
                   fullWidth
                   id="nombre"
@@ -235,18 +263,18 @@ function AltaProveedor() {
                   onChange={handleChange}
                   error={!isCamposValidos.nombre}
                   helperText={
-                    !isCamposValidos.nombre && "El nombre es obligatorio."
+                    !isCamposValidos.nombre &amp;&amp; "El nombre es obligatorio."
                   }
                 />
-              </Grid>
+              &lt;/Grid>
 
               {/* Campo de fecha de nacimiento */}
-              <Grid item size={{ xs: 10 }}>
-                <LocalizationProvider
+              &lt;Grid item size={{ xs: 10 }}>
+                &lt;LocalizationProvider
                   dateAdapter={AdapterDayjs}
                   adapterLocale="es"
                 >
-                  <DatePicker
+                  &lt;DatePicker
                     label="Fecha de creacion"
                     name="fechaCreacion"
                     minDate={dayjs("1800-01-01")}
@@ -272,12 +300,12 @@ function AltaProveedor() {
                       })
                     }
                   />
-                </LocalizationProvider>
-              </Grid>
+                &lt;/LocalizationProvider>
+              &lt;/Grid>
 
               {/* Campo de recurso */}
-              <Grid item size={{ xs: 10 }}>
-                <TextField
+              &lt;Grid item size={{ xs: 10 }}>
+                &lt;TextField
                   fullWidth
                   id="recurso"
                   label="Recurso"
@@ -290,9 +318,9 @@ function AltaProveedor() {
                   value={proveedor.recurso}
                   onChange={handleChange}
                 />
-              </Grid>
-              <Grid item size={{ xs: 10 }}>
-                <TextField
+              &lt;/Grid>
+              &lt;Grid item size={{ xs: 10 }}>
+                &lt;TextField
                   id="cantidad"
                   label="Cantidad del recurso"
                   name="cantidad"
@@ -300,10 +328,10 @@ function AltaProveedor() {
                   value={proveedor.cantidad}
                   onChange={handleChange}
                 />
-              </Grid>
+              &lt;/Grid>
               {/* Campo de facturacion de la proveedor */}
-              <Grid item size={{ xs: 10 }}>
-                <TextField
+              &lt;Grid item size={{ xs: 10 }}>
+                &lt;TextField
                   id="facturacion"
                   label="Facturacion del proveedor"
                   name="facturacion"
@@ -311,9 +339,9 @@ function AltaProveedor() {
                   value={proveedor.facturacion}
                   onChange={handleChange}
                 />
-              </Grid>
-              <Grid item size={{ xs: 10 }}>
-                <TextField
+              &lt;/Grid>
+              &lt;Grid item size={{ xs: 10 }}>
+                &lt;TextField
                   select
                   required
                   fullWidth
@@ -324,29 +352,29 @@ function AltaProveedor() {
                   onChange={handleChange}
                   error={!isCamposValidos.empresaIdEmpresa}
                   helperText={
-                    !isCamposValidos.empresaIdEmpresa &&
+                    !isCamposValidos.empresaIdEmpresa &amp;&amp;
                     "Debe seleccionar una empresa"
                   }
                 >
-                  <MenuItem value="">
-                    <em>Seleccionar empresa</em>
-                  </MenuItem>
+                  &lt;MenuItem value="">
+                    &lt;em>Seleccionar empresa&lt;/em>
+                  &lt;/MenuItem>
                   {empresas.map((empresa) => (
-                    <MenuItem
+                    &lt;MenuItem
                       key={empresa.id_empresa}
                       value={empresa.id_empresa}
                     >
                       {empresa.nombre}
-                    </MenuItem>
+                    &lt;/MenuItem>
                   ))}
-                </TextField>
-              </Grid>
+                &lt;/TextField>
+              &lt;/Grid>
               {/* Campo de facturacion de la proveedor */}
-              <Grid item size={{ xs: 10 }}>
-                <FormControlLabel
+              &lt;Grid item size={{ xs: 10 }}>
+                &lt;FormControlLabel
                   label="¿Esta el proveedor activo?"
                   control={
-                    <Checkbox
+                    &lt;Checkbox
                       id="activa"
                       label="¿Esta el proveedor activo?"
                       name="activa"
@@ -357,14 +385,14 @@ function AltaProveedor() {
                     />
                   }
                 />
-              </Grid>
+              &lt;/Grid>
               {/* Botón de aceptar */}
-              <Grid
+              &lt;Grid
                 item
                 size={{ xs: 10 }}
                 sx={{ display: "flex", justifyContent: "flex-end" }}
               >
-                <Button
+                &lt;Button
                   variant="contained"
                   sx={{ mt: 3 }}
                   loading={isUpdating}
@@ -373,34 +401,57 @@ function AltaProveedor() {
                   onClick={handleClick}
                 >
                   Aceptar
-                </Button>
-              </Grid>
-            </Grid>
-          </Paper>
-        </Grid>
-      </Grid>
+                &lt;/Button>
+              &lt;/Grid>
+            &lt;/Grid>
+          &lt;/Paper>
+        &lt;/Grid>
+      &lt;/Grid>
 
       {/* Diálogo de resultado */}
-      <Dialog
+      &lt;Dialog
         open={openDialog}
         onClose={handleDialogClose}
         disableEscapeKeyDown
         aria-labelledby="result-dialog-title"
       >
-        <DialogTitle id="result-dialog-title">
+        &lt;DialogTitle id="result-dialog-title">
           {dialogSeverity === "success" ? "Operación correcta" : "Error"}
-        </DialogTitle>
-        <DialogContent dividers>
-          <Alert severity={dialogSeverity} variant="filled">
+        &lt;/DialogTitle>
+        &lt;DialogContent dividers>
+          &lt;Alert severity={dialogSeverity} variant="filled">
             {dialogMessage}
-          </Alert>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleDialogClose}>OK</Button>
-        </DialogActions>
-      </Dialog>
-    </>
+          &lt;/Alert>
+        &lt;/DialogContent>
+        &lt;DialogActions>
+          &lt;Button onClick={handleDialogClose}>OK&lt;/Button>
+        &lt;/DialogActions>
+      &lt;/Dialog>
+    &lt;/>
   );
 }
 
 export default AltaProveedor;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-api.html">api</a></li><li><a href="module-components_AltaEmpresa.html">components/AltaEmpresa</a></li><li><a href="module-components_AltaProveedor.html">components/AltaProveedor</a></li><li><a href="module-components_Inicio.html">components/Inicio</a></li><li><a href="module-components_ListadoEmpresas.html">components/ListadoEmpresas</a></li><li><a href="module-components_ListadoEmpresasFiltrado.html">components/ListadoEmpresasFiltrado</a></li><li><a href="module-components_ListadoEmpresasFiltroPDF.html">components/ListadoEmpresasFiltroPDF</a></li><li><a href="module-components_ListadoProveedores.html">components/ListadoProveedores</a></li><li><a href="module-components_ListadoProveedoresFiltrado.html">components/ListadoProveedoresFiltrado</a></li><li><a href="module-components_ModificarEmpresa.html">components/ModificarEmpresa</a></li><li><a href="module-components_ModificarProveedor.html">components/ModificarProveedor</a></li><li><a href="module-utils_generatePDF.html">utils/generatePDF</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Menu">Menu</a></li><li><a href="global.html#PaginaError">PaginaError</a></li><li><a href="global.html#router">router</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Fri Feb 13 2026 21:48:35 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

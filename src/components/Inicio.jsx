@@ -17,7 +17,7 @@ import Box from "@mui/material/Box";
  * Características:
  * - Centrado vertical y horizontal en la pantalla
  * - Altura mínima que cubre toda la viewport (menos la altura del navbar)
- * - Mensaje de bienvenida en tamaño grande (variant h3)
+ * - Mensaje de bienvenida en tamaño grande
  * 
  * @component
  * @returns {JSX.Element} Página de inicio con mensaje de bienvenida

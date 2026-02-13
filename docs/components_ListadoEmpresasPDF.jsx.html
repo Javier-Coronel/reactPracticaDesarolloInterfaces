@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/ListadoEmpresasPDF.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/ListadoEmpresasPDF.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @fileoverview Componente PDF para exportar listado de empresas filtradas
+ * 
+ * Componente React-PDF que genera un documento PDF con tabla de empresas.
+ * Utiliza StyleSheet para estilizar tabla de 6 columnas con bordes, 
+ * encabezados con color de fondo gris y truncamiento de sinopsis.
+ * 
+ * @module components/ListadoEmpresasFiltroPDF
+ * @requires @react-pdf/renderer
+ */
+
+import {
+  Document,
+  Page,
+  Text,
+  View,
+  StyleSheet,
+} from "@react-pdf/renderer";
+
+/**
+ * Estilos para el documento PDF de empresas
+ * Define página, tabla, encabezados y celdas con bordes y colores
+ * Tabla de 6 columnas con ancho de 20% cada una
+ * @type {StyleSheet}
+ */
+const styles = StyleSheet.create({
+  // Estilos de página: padding interno y tamaño de fuente base
+  page: {
+    padding: 20,
+    fontSize: 9,
+  },
+  // Estilos del título: centrado, fuerte, con separación inferior
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 20,
+    textAlign: "center",
+  },
+  // Estilos de tabla: ancho completo, flexbox para filas
+  table: {
+    display: "table",
+    width: "100%",
+    // borderStyle: "solid",
+    // borderWidth: 1,
+    // borderColor: "#bfbfbf",
+    marginTop: 20,
+  },
+  // Estilos de fila: dirección horizontal
+  tableRow: {
+    margin: "auto",
+    flexDirection: "row",
+  },
+  // Estilos de encabezado: fondo gris, bordes, 20% ancho (5 columnas)
+  tableColHeader: {
+    width: "18%",
+    borderStyle: "solid",
+    borderWidth: 1,
+    borderColor: "#bfbfbf",
+    backgroundColor: "#000",
+    padding: 8,
+    fontWeight: "bold",
+    color: "#FFF"
+  },
+  smallTableColHeader: {
+    width: "16%",
+    borderStyle: "solid",
+    borderWidth: 1,
+    borderColor: "#bfbfbf",
+    backgroundColor: "#000",
+    padding: 8,
+    fontWeight: "bold",
+    color: "#FFF"
+
+  },
+  // Estilos de columna de datos: bordes, ancho proporcional
+  tableCol: {
+    width: "18%",
+    borderStyle: "solid",
+    borderWidth: 1,
+    borderColor: "#bfbfbf",
+    padding: 8,
+  },
+  smallTableCol: {
+    width: "16%",
+    borderStyle: "solid",
+    borderWidth: 1,
+    borderColor: "#bfbfbf",
+    padding: 8,
+
+  },
+  // Estilos de celda: tamaño de fuente reducido para tabla
+  tableCell: {
+    margin: "auto",
+    marginTop: 5,
+    fontSize: 8,
+  },
+});
+
+/**
+ * Componente PDF para exportar listado de empresas
+ * 
+ * Genera un documento PDF con una tabla de 6 columnas
+ * 
+ * @component
+ * @param {Object} props - Propiedades del componente
+ * @param {Array&lt;Object>} props.data - Array de empresas a mostrar en la tabla
+ * @param {string} props.data[].nombre - Nombre de la emresa
+ * @param {Object} props.data[].descripcion - Descripcion de la emresa
+ * @param {string} props.data[].fechaCreacion - Fecha de creacion de la empresa
+ * @param {string} props.data[].activa - Si la empresa esta activa
+ * @param {string} props.data[].facturacion - Facturacion de la empresa
+ * @param {string} props.data[].porcentajeEnBolsa - Porcentage de la empresa que esta en bolsa
+ * @returns {JSX.Element} Documento PDF con la tabla de empresas
+ */
+function ListadoEmpresasFiltroPDF({ data }) {
+  return (
+    // Documento PDF con página tamaño A4
+    &lt;Document>
+      &lt;Page size="A4" style={styles.page}>
+        {/* Título del documento PDF */}
+        &lt;View style={styles.title}>
+          &lt;Text>Listado de Empresas&lt;/Text>
+        &lt;/View>
+
+        {/* Tabla principal */}
+        &lt;View style={styles.table}>
+          {/* Fila de encabezados */}
+          &lt;View style={styles.tableRow}>
+            {/* Columna: Nombre */}
+            &lt;View style={styles.tableColHeader}>
+              &lt;Text style={styles.tableCell}>Nombre&lt;/Text>
+            &lt;/View>
+            {/* Columna: Descripcion */}
+            &lt;View style={styles.tableColHeader}>
+              &lt;Text style={styles.tableCell}>Descripcion&lt;/Text>
+            &lt;/View>
+            {/* Columna: Fecha creacion */}
+            &lt;View style={styles.tableColHeader}>
+              &lt;Text style={styles.tableCell}>Fecha creacion&lt;/Text>
+            &lt;/View>
+            {/* Columna: ¿Esta activa? */}
+            &lt;View style={styles.smallTableColHeader}>
+              &lt;Text style={styles.tableCell}>¿Esta activa?&lt;/Text>
+            &lt;/View>
+            {/* Columna: Facturacion */}
+            &lt;View style={styles.smallTableColHeader}>
+              &lt;Text style={styles.tableCell}>Facturacion&lt;/Text>
+            &lt;/View>
+            {/* Columna: Porcentaje en bolsa */}
+            &lt;View style={styles.smallTableColHeader}>
+              &lt;Text style={styles.tableCell}>Porcentaje en bolsa&lt;/Text>
+            &lt;/View>
+          &lt;/View>
+
+          {/* Renderizar filas de datos para cada empresa */}
+          {data.map((empresa, index) => (
+            &lt;View style={styles.tableRow} key={index}>
+              {/* Celda: Nombre de la empresa */}
+              &lt;View style={styles.tableCol}>
+                &lt;Text style={styles.tableCell}>{empresa.nombre}&lt;/Text>
+              &lt;/View>
+              {/* Celda: Descripcion de la empresa */}
+              &lt;View style={styles.tableCol}>
+                &lt;Text style={styles.tableCell}>{empresa.descripcion}&lt;/Text>
+              &lt;/View>
+              {/* Celda: Fecha en la que se creo la empresa */}
+              &lt;View style={styles.tableCol}>
+                &lt;Text style={styles.tableCell}>{empresa.fechaCreacion}&lt;/Text>
+              &lt;/View>
+              {/* Celda: ¿Esta la empresa activa? */}
+              &lt;View style={styles.smallTableCol}>
+                &lt;Text style={styles.tableCell}>{empresa.activa?"Si":"No"}&lt;/Text>
+              &lt;/View>
+              {/* Celda: Facturacion de la empresa */}
+              &lt;View style={styles.smallTableCol}>
+                &lt;Text style={styles.tableCell}>{empresa.facturacion}&lt;/Text>
+              &lt;/View>
+              {/* Celda: Porcentage de la empresa que esta en bolsa */}
+              &lt;View style={styles.smallTableCol}>
+                &lt;Text style={styles.tableCell}>{empresa.porcentajeEnBolsa}&lt;/Text>
+              &lt;/View>
+              
+            &lt;/View>
+          ))}
+        &lt;/View>
+      &lt;/Page>
+    &lt;/Document>
+  );
+}
+
+export default ListadoEmpresasFiltroPDF;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-api.html">api</a></li><li><a href="module-components_AltaEmpresa.html">components/AltaEmpresa</a></li><li><a href="module-components_AltaProveedor.html">components/AltaProveedor</a></li><li><a href="module-components_Inicio.html">components/Inicio</a></li><li><a href="module-components_ListadoEmpresas.html">components/ListadoEmpresas</a></li><li><a href="module-components_ListadoEmpresasFiltrado.html">components/ListadoEmpresasFiltrado</a></li><li><a href="module-components_ListadoEmpresasFiltroPDF.html">components/ListadoEmpresasFiltroPDF</a></li><li><a href="module-components_ListadoProveedores.html">components/ListadoProveedores</a></li><li><a href="module-components_ListadoProveedoresFiltrado.html">components/ListadoProveedoresFiltrado</a></li><li><a href="module-components_ModificarEmpresa.html">components/ModificarEmpresa</a></li><li><a href="module-components_ModificarProveedor.html">components/ModificarProveedor</a></li><li><a href="module-utils_generatePDF.html">utils/generatePDF</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Menu">Menu</a></li><li><a href="global.html#PaginaError">PaginaError</a></li><li><a href="global.html#router">router</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Fri Feb 13 2026 21:48:35 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
