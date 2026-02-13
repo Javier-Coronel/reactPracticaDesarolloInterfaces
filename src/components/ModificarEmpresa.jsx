@@ -72,7 +72,7 @@ function ModificarEmpresa() {
                 setOpenDialog(true);
             } catch (error) {
                 // Mostrar mensaje de error
-                setDialogMessage(error.mensaje || "Error al crear el empresa");
+                setDialogMessage(error.mensaje || "Error al editar el empresa");
                 setDialogSeverity("error");
                 setOpenDialog(true);
             }
@@ -82,6 +82,7 @@ function ModificarEmpresa() {
 
         if (isUpdating) fetchUpdateEmpresa();
     }, [isUpdating]);
+
     useEffect(() => {
     async function fetchEmpresa() {
       try {
@@ -185,7 +186,7 @@ function ModificarEmpresa() {
                     <Paper elevation={6} sx={{ mt: 3, p: 3, maxWidth: 900, mx: "auto" }}>
                         {/* Título del formulario */}
                         <Typography variant="h4" align="center" sx={{ mb: 3 }}>
-                            Creacion de la empresa
+                            Actualización de la empresa {empresa.nombre}
                         </Typography>
 
                         {/* Grid con los campos */}
@@ -316,7 +317,6 @@ function ModificarEmpresa() {
                                     variant="contained"
                                     sx={{ mt: 3 }}
                                     loading={isUpdating}
-                                    defaultValue={empresa.activa}
                                     loadingPosition="end"
                                     onClick={handleClick}
                                 >

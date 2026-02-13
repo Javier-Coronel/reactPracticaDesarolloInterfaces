@@ -7,7 +7,7 @@ import ListadoProveedores from "./components/ListadoProveedores"
 import AltaEmpresa from "./components/AltaEmpresa"
 import AltaProveedor from "./components/AltaProveedor"
 import ModificarEmpresa from "./components/ModificarEmpresa"
-//import ModificarProveedor from "./components/ModificarProveedor"
+import ModificarProveedor from "./components/ModificarProveedor"
 import Inicio from "./components/Inicio"
 import Home from "./pages/Home"
 //import PaginaError from "./pages/PaginaError"
@@ -50,11 +50,11 @@ let router = createBrowserRouter([
       {
         path: "modificarempresa/:id_empresa",
         element: <ModificarEmpresa />,
-      },/*
+      },
       {
         path: "modificarproveedor/:id_proveedor",
         element: <ModificarProveedor />,
-      },*/
+      },
     ],
   },
 ]);

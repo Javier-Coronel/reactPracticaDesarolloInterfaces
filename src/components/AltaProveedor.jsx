@@ -106,6 +106,10 @@ function AltaProveedor() {
   function handleChange(e) {
     setProveedor({ ...proveedor, [e.target.name]: e.target.value });
   }
+  
+  function handleChangeCheck(e){
+      setProveedor({ ...proveedor, [e.target.name]: e.target.checked });
+  }
 
   /**
    * Maneja el click en el botón de aceptar
@@ -138,14 +142,14 @@ function AltaProveedor() {
     let valido = true;
     let objetoValidacion = {
       nombre: true,
-      descripcion: true,
       fechaCreacion: true,
       activa: true,
+      recurso: true,
+      cantidad: true,
       facturacion: true,
-      porcentajeEnBolsa: true,
+      empresaIdEmpresa: true
     };
 
-    // Validación del nombre: mínimo 10 caracteres
     if (proveedor.nombre.length > 50 || proveedor.nombre.length <= 0) {
       valido = false;
       objetoValidacion.nombre = false;
@@ -245,23 +249,32 @@ function AltaProveedor() {
                 </LocalizationProvider>
               </Grid>
 
-              {/* Campo de descripcion */}
+              {/* Campo de recurso */}
               <Grid item size={{ xs: 10 }}>
                 <TextField
                   fullWidth
-                  id="descripcion"
-                  label="Descripcion"
-                  name="descripcion"
+                  id="recurso"
+                  label="Recurso"
+                  name="recurso"
                   type="text"
                   multiline
                   maxRows={4}
                   minRows={2}
                   maxLength="50"
-                  value={proveedor.descripcion}
+                  value={proveedor.recurso}
                   onChange={handleChange}
                 />
               </Grid>
-
+              <Grid item size={{ xs: 10 }}>
+                <TextField
+                  id="cantidad"
+                  label="Cantidad del recurso"
+                  name="cantidad"
+                  type="number"
+                  value={proveedor.cantidad}
+                  onChange={handleChange}
+                />
+              </Grid>
               {/* Campo de facturacion de la proveedor */}
               <Grid item size={{ xs: 10 }}>
                 <TextField
@@ -311,8 +324,10 @@ function AltaProveedor() {
                       id="activa"
                       label="¿Esta el proveedor activo?"
                       name="activa"
+                      defaultValue={proveedor.activa}
+                      checked={proveedor.activa}
                       value={proveedor.activa}
-                      onChange={handleChange}
+                      onChange={handleChangeCheck}
                     />
                   }
                 />

@@ -132,7 +132,6 @@ function AltaEmpresa() {
             porcentajeEnBolsa: true
         };
 
-        // Validación del nombre: mínimo 10 caracteres
         if (empresa.nombre.length > 50 || empresa.nombre.length <= 0) {
             valido = false;
             objetoValidacion.nombre = false;

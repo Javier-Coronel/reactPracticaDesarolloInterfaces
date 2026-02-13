@@ -143,7 +143,7 @@ function ListadoProveedores() {
                 <TableCell>Recurso</TableCell>
                 <TableCell>Cantidad del recurso</TableCell>
                 <TableCell>Facturacion</TableCell>
-                <TableCell>Proove a la empresa:</TableCell>
+                <TableCell>Prove a la empresa:</TableCell>
                 <TableCell>¿Esta activa?</TableCell>
                 <TableCell align="center">Acciones</TableCell>
               </TableRow>
@@ -157,7 +157,8 @@ function ListadoProveedores() {
                   <TableCell>{row.recurso}</TableCell>
                   <TableCell>{row.cantidad}</TableCell>
                   <TableCell>{row.facturacion}</TableCell>
-                  <TableCell>{row.empresa.nombre}</TableCell>
+                  <TableCell>{row.empresa?row.empresa.nombre : "Ninguna"}</TableCell>
+                  
                   <TableCell align="center">
                     <Checkbox
                       checked={row.activa}
